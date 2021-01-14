@@ -1,4 +1,4 @@
-# react-native-set-version
+# react-native-versioner
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -16,25 +16,25 @@ In order to use this package, your project version must comply with the format d
 
 ## Setup and Usage
 
-There are two ways to install react-native-set-version: globally and locally.
+There are two ways to install react-native-versioner: globally and locally.
 
 ### Local Installation
 
-This is the recommended way to install react-native-set-version.
+This is the recommended way to install react-native-versioner.
 
 npm:
 
 ```bash
-npm install react-native-set-version --save-dev
+npm install react-native-versioner --save-dev
 ```
 
 yarn:
 
 ```bash
-yarn add react-native-set-version --dev
+yarn add react-native-versioner --dev
 ```
 
-You can then use this command in your project directory to run react-native-set-version:
+You can then use this command in your project directory to run react-native-versioner:
 
 npm:
 
@@ -54,21 +54,21 @@ $ yarn set-version <version>
 
 ### Global Installation
 
-This installation method allows you to use react-native-set-version in any project.
+This installation method allows you to use react-native-versioner in any project.
 
 npm:
 
 ```bash
-npm install -g react-native-set-version
+npm install -g react-native-versioner
 ```
 
 yarn:
 
 ```bash
-yarn global add react-native-set-version
+yarn global add react-native-versioner
 ```
 
-You can then use this command in your project directory to run react-native-set-version:
+You can then use this command in your project directory to run react-native-versioner:
 
 ```bash
 setVersion <version>
@@ -78,7 +78,7 @@ set-version <version>
 
 ## Behaviour
 
-When invoked, react-native-set-version will make the following changes to your project files:
+When invoked, react-native-versioner will make the following changes to your project files:
 
 ### Update Package Version
 
@@ -94,7 +94,7 @@ Version information should not be in the `AndroidManifest.xml` since this inform
 
 See https://developer.android.com/studio/publish/versioning for further informations.
 
-For that reason `react-native-set-version` will only write in the `AndroidManifest.xml` if `android:versionCode` and/or `android:versionName` are already in the file.
+For that reason `react-native-versioner` will only write in the `AndroidManifest.xml` if `android:versionCode` and/or `android:versionName` are already in the file.
 
 ### Update iOS Project Version
 
