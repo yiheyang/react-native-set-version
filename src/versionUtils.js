@@ -1,11 +1,3 @@
-const pad = (stringToPad, width, paddingCharacter) => {
-  const padChar = paddingCharacter || '0';
-  const toPad = stringToPad.toString();
-  return toPad.length >= width
-    ? toPad
-    : new Array((width - toPad.length) + 1).join(padChar) + toPad;
-};
-
 const trimText = (s) => {
   const indexOfString = s.search(/[^\d]/);
   let result = s;
@@ -42,16 +34,6 @@ const versionStringToVersion = (versionString, currentVersion, currentVersionCod
   };
 };
 
-const versionToVersionCode = (version) => {
-  const major = pad(version.major, 2);
-  const minor = pad(version.minor, 2);
-  const patch = pad(version.patch, 2);
-  const { build } = version;
-
-  return +(`${major}${minor}${patch}${build}`);
-};
-
 module.exports = {
   versionStringToVersion,
-  versionToVersionCode,
 };

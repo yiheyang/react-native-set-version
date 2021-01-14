@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable camelcase */
-import { versionStringToVersion, versionToVersionCode } from '../versionUtils';
+import { versionStringToVersion } from '../versionUtils';
 
 const version0_4_0_2String = '0.4.0-alpha.2';
 const version1_5_2String = '1.5.2';
@@ -49,19 +49,5 @@ describe('versionStringToVersion:', () => {
 
   it('Should match version10_12_3 object when version string is 10.12.3', () => {
     expect(versionStringToVersion(version10_12_3String)).toEqual(version10_12_3);
-  });
-});
-
-describe('versionToVersionCode:', () => {
-  it('Should return 4002 when version is 0.4.0-alpha.2 and build number is 2', () => {
-    expect(versionToVersionCode(version0_4_0_2)).toBe(4002);
-  });
-
-  it('Should return 105021 when version is 1.5.2', () => {
-    expect(versionToVersionCode(version1_5_2)).toBe(105021);
-  });
-
-  it('Should return 1012031 when version is 10.12.3', () => {
-    expect(versionToVersionCode(version10_12_3)).toBe(1012031);
   });
 });
