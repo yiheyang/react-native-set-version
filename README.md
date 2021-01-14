@@ -2,7 +2,7 @@
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This tool allows you to easily update the version of a React Native application.
+This tool allows you to easily update the version name and code of a React Native application.
 It will update the following files if found:
 
 - **./package.json**
@@ -39,17 +39,17 @@ You can then use this command in your project directory to run react-native-vers
 npm:
 
 ```bash
-$ npm run setVersion <version>
+$ npm run setVersion <versionName> <versionCode>
 -- or --
-$ npm run set-version <version>
+$ npm run set-version <versionName> <versionCode>
 ```
 
 yarn:
 
 ```bash
-$ yarn setVersion <version>
+$ yarn setVersion <versionName> <versionCode>
 -- or --
-$ yarn set-version <version>
+$ yarn set-version <versionName> <versionCode>
 ```
 
 ### Global Installation
@@ -71,9 +71,9 @@ yarn global add react-native-versioner
 You can then use this command in your project directory to run react-native-versioner:
 
 ```bash
-setVersion <version>
+setVersion <versionName> <versionCode>
 -- or --
-set-version <version>
+set-version <versionName> <versionCode>
 ```
 
 ## Behaviour
@@ -82,11 +82,11 @@ When invoked, react-native-versioner will make the following changes to your pro
 
 ### Update Package Version
 
-The **version** attribute in `package.json` will be updated with the specified version.
+The **version** attribute in `package.json` will be updated with the specified parameter `versionName`.
 
 ### Update Android Project Version
 
-It will update the **version name** and the **version code** in both `build.gradle` and `AndroidManifest.xml`.
+It will update the **version name** and the **version code** in both `build.gradle` and `AndroidManifest.xml` with the specified parameter `versionName`. and `versionCode`.
 
 #### About AndroidManifest.xml
 
@@ -99,46 +99,6 @@ For that reason `react-native-versioner` will only write in the `AndroidManifest
 ### Update iOS Project Version
 
 It will update the **CFBundleShortVersionString** and the **CFBundleVersion** in `Info.plist`.
-
-### How the version code and CFBundleVersion are updated
-
-The Android version code represents your version number as an integer. This
-package uses the following format to generate this integer:
-
-```
-<MAJOR><MINOR ON 2 DIGITS><PATCH ON 2 DIGITS><BUILD NUMBER>
-```
-
-For instance, the first time you call `set-version 3.1.4`, it will produce the version code `301041`.
-
-If you call the command with the same version a second time, it will increment the build number, to produce `301042`.
-
-This also applies if, for instance, you call `set-version 3.1.4-rc.1`, and then `set-version 3.1.4-rc.2`.
-
-As for the `CFBundleVersion` on iOS, it will produce a string in the format `<MAJOR>.<MINOR>.<PATCH>.<BUILD NUMBER>`.
-
-Example:
-
-```bash
-$ yarn set-version 1.0.0-rc.1
-# Output
-# ...
-# Will set android version code to 100001
-# ...
-# Will set CFBundleVersion to 1.0.0.1
-$ yarn set-version 1.0.0-rc.2
-# Output
-# ...
-# Will set android version code to 100002
-# ...
-# Will set CFBundleVersion to 1.0.0.2
-$ yarn set-version 1.0.0
-# Output
-# ...
-# Will set android version code to 100003
-# ...
-# Will set CFBundleVersion to 1.0.0.3
-```
 
 ## License
 
