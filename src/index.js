@@ -61,7 +61,7 @@ function getIOSVersionInfo(newVersionName, newVersionCode) {
 
 async function setIosApplicationVersion(newVersionName, newVersionCode) {
   const { version } = await getIOSVersionInfo(newVersionName, newVersionCode);
-  const bundleVersion = `${version.major}.${version.minor}.${version.patch}.${version.build}`;
+  const bundleVersion = `${version.build}`;
   if (version) {
     display('');
     display(chalk.yellow('IOS version info:'));
@@ -148,7 +148,7 @@ async function setAndroidApplicationVersion(newVersionName, newVersionCode) {
 const changeVersion = async () => {
   const newVersionName = process.argv[2];
   const newVersionCode = process.argv[3];
-  const appName = setPackageVersion(newVersionName).name;
+  const appName = setPackageVersion(newVersionName).appName;
 
   paths.infoPlist = paths.infoPlist.replace('<APP_NAME>', appName);
   await setAndroidApplicationVersion(newVersionName, newVersionCode);

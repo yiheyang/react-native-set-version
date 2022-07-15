@@ -90,3 +90,4 @@ build/
 
 .vs
 .npmrc
+.idea
