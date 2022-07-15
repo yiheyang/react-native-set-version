@@ -61,7 +61,7 @@ function getIOSVersionInfo(newVersionName, newVersionCode) {
 
 async function setIosApplicationVersion(newVersionName, newVersionCode) {
   const { version } = await getIOSVersionInfo(newVersionName, newVersionCode);
-  const bundleVersion = `${version.build}`;
+  const bundleVersion = `${newVersionCode}`;
   if (version) {
     display('');
     display(chalk.yellow('IOS version info:'));
