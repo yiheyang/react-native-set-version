@@ -17,12 +17,13 @@ const paths = {
   packageJson: './package.json',
 };
 
-function setPackageVersion(versionText) {
+function setPackageVersion(versionText, newVersionCode) {
   let packageJSON = null;
   try {
     packageJSON = JSON.parse(fs.readFileSync(paths.packageJson));
     display(chalk.yellow(`Will set package version to ${chalk.bold.underline(versionText)}`));
     packageJSON.version = versionText;
+    packageJSON.buildVersion = newVersionCode;
     fs.writeFileSync(paths.packageJson, `${JSON.stringify(packageJSON, null, '\t')}\n`);
     display(chalk.green(`Version replaced in ${chalk.bold('package.json')}`));
   } catch (err) {
@@ -146,9 +147,17 @@ async function setAndroidApplicationVersion(newVersionName, newVersionCode) {
 }
 
 const changeVersion = async () => {
+  const version = process.argv[2];
+  const versionCode = String(Number(process.argv[3]) || 0);
+
+  const version1 = version.split('.')[0];
+  const version2 = version.split('.')[1].padStart(2, '0');
+  const version3 = version.split('.')[2].padStart(2, '0');
+  const version4 = versionCode.padStart(2, '0');
+
   const newVersionName = process.argv[2];
-  const newVersionCode = String(Number(process.argv[3]) || 0);
-  const { appName } = setPackageVersion(newVersionName);
+  const newVersionCode = version1 + version2 + version3 + version4;
+  const { appName } = setPackageVersion(newVersionName, newVersionCode);
 
   paths.infoPlist = paths.infoPlist.replace('<APP_NAME>', appName);
   await setAndroidApplicationVersion(newVersionName, newVersionCode);
