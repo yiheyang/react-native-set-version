@@ -147,8 +147,16 @@ async function setAndroidApplicationVersion(newVersionName, newVersionCode) {
 }
 
 const changeVersion = async () => {
+  const version = process.argv[2];
+  const versionCode = String(Number(process.argv[3]) || 0);
+
+  const version1 = version.split('.')[0];
+  const version2 = version.split('.')[1].padStart(2, '0');
+  const version3 = version.split('.')[2].padStart(2, '0');
+  const version4 = versionCode.padStart(2, '0');
+
   const newVersionName = process.argv[2];
-  const newVersionCode = String(Number(process.argv[3]) || 0);
+  const newVersionCode = version1 + version2 + version3 + version4;
   const { appName } = setPackageVersion(newVersionName, newVersionCode);
 
   paths.infoPlist = paths.infoPlist.replace('<APP_NAME>', appName);
