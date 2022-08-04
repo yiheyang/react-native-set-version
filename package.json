@@ -1,5 +1,5 @@
 {
-  "name": "@yiheyang/react-native-set-version",
+  "name": "react-native-version-set",
   "version": "1.0.4",
   "description": "Set the version in package.json, android/app/build.gradle and info.plist",
   "license": "MIT",
